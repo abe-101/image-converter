@@ -9,6 +9,10 @@ import os
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
 
+# Ensure the upload directory exists
+if not os.path.isdir(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
 
 # Define a function to check if a file is an allowed image type
 def allowed_file(filename):
